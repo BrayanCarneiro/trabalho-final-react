@@ -1,4 +1,4 @@
-function NavBar() {
+export default function NavBar() {
 
     return (
         <>
