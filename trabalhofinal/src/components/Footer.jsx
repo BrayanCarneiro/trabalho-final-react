@@ -2,10 +2,9 @@ export default function Footer() {
 
     let estiloFooter = {
         background: "#191919",
-        width: "100vw",
         height: "200px",
         color: "white",
-        textAlign: "center",
+        textAlign: "center"
     }
 
     let estiloP = {
