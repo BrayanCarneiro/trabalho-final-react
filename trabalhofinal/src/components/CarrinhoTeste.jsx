@@ -1,5 +1,7 @@
-import React from "react";
-function Carrinho(){
+import React, { useEffect } from "react";
+import EventEmitter from "../utils/EventEmitter";
+
+function Carrinho(props){
 
     // const api = axios.create({
 //   baseURL: "https://619ff2c9a647020017613242.mockapi.io/"
@@ -7,9 +9,33 @@ function Carrinho(){
 
 // api.get("/").then((response) => console.log(response.data));
 
-const [count, setCount] = React.useState(0);
 
-const [lista, setLista] = React.useState([]);
+// const [count, setCount] = React.useState(0);
+
+const [listaState, setListaState] = React.useState([]);
+
+let listaGeral = [];
+
+useEffect(() => {
+    const onNovoProduto = (eventData) => {
+        // let listaNova = []
+        listaGeral.push(eventData);       
+        console.log('listaGeral', listaGeral);
+        setListaState(valorAnterior => ([
+            ...valorAnterior, eventData
+        ]))
+        console.log(listaState);
+    }
+
+    const listener = EventEmitter.addListener('novoProduto', onNovoProduto)
+
+    return () => {
+        listener.remove();
+    }
+}, [])
+
+
+
 
 let item1 = {
         nome: "carlos el topo que gira",
@@ -32,9 +58,7 @@ let item3 = {
         id : 3
 }
 
-    let produtos = [item1,item2,item3]
-    this.setLista(["oi"])
-    console.log(lista)
+    let produtos = [item1,item2,item3];
 
 function aumentar(item,index){
 //  let index = lista.indexOf(produto => produto.id == item.id)
@@ -49,7 +73,7 @@ return(
    <div>
     <p>Carrinho</p>
     <ul> 
-         {produtos.map((item,index) => {
+         {listaGeral.map((item,index) => {
 
 
         // const [item, setCount] = React.useState(0);
@@ -63,9 +87,6 @@ return(
           <p>total: {item.preco*item.quantidade}</p>
           <br />
           <br />
-          <button key = {item.id} type="button" onClick={()=>aumentar(item,index)}>
-            quantidade: 
-          </button>
             </li>
         )
 

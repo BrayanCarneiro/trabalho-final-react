@@ -1,35 +1,39 @@
 import {Row, Col, Card, Button, Container} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import React from 'react';
+import api from "./api";
 
 export default function CardProduto() {
+    const[itens, setItens] = React.useState([]);
 
-    let estilo = {
-        margin: "40px 0"
+    React.useEffect(consultar, []);
+
+    function consultar(){
+        const listar = (res) => setItens(res.data);
+        api.get("/produto").then(listar);
     }
 
     return (
-        <>
-            <Container>
+        < div style={{background: "#e3e3e3"}}>
+            <Container >
+                <h1>Nossos Produtos</h1>
                 <Row xs={1} md={3} className="g-4">
-                    {Array.from({ length:  6}).map((_, idx) => (
-                        <Col style={estilo}>
-                            <Card>
-                            <Card.Img variant="top" src="https://preview.redd.it/0na3mtd688l41.jpg?auto=webp&s=75b28f8447424e23e03e5fe4b93dde8eb1c903bd" />
-                            <Card.Body>
-                            <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                                This is a longer card with supporting text below as a natural
-                                lead-in to additional content. This content is a little bit longer.
-                            </Card.Text>
-                            <Button variant="primary">
-                                <Link style={{textDecoration:"none", color: "white"}} to="/descricao">Ver produto</Link>
-                            </Button>
-                            </Card.Body>
-                            </Card>
-                        </Col>
+
+                    {itens.map((i) => (
+                        <Col style={{margin: "40px 0"}} key={i.id}>
+                        <Card>
+                        <Card.Img variant="top" src={i.fotoLink} />
+                        <Card.Body>
+                        <Card.Title>{i.nome}</Card.Title>
+                        <Button variant="primary">
+                            <Link style={{textDecoration:"none", color: "white"}} to={`/descricao/${i.id}`}>Ver produto</Link>
+                        </Button>
+                        </Card.Body>
+                        </Card>
+                    </Col>
                     ))}
                 </Row>
             </Container>
-        </>
+        </div>
     );
 }

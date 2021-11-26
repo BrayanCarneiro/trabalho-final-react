@@ -1,25 +1,44 @@
 import {Container, Row, Col, Image, Button} from 'react-bootstrap';
+import EventEmitter from '../utils/EventEmitter.js';
+import { Link, useParams } from "react-router-dom";
+import api from "./api";
+import React from 'react';
 
 export default function DescricaoProduto() {
+
+    // const novoProduto= () =>{
+    //    EventEmitter.emit('novoProduto', {
+    //        valor: 1000
+    //    })
+    // }
+
+    const { id } = useParams();
+    const [item, setItem] = React.useState({});
+
+    React.useEffect(consultar, []);
+
+    function consultar() {
+        const mostrarDetalhe = (res) => setItem(res.data);
+        api.get(`/produto/${id}`).then(mostrarDetalhe);
+    }
 
     return (
         <>
             <Container>
                 <Row>
                     <Col sm={6}>
-                    <Image src="https://preview.redd.it/0na3mtd688l41.jpg?auto=webp&s=75b28f8447424e23e03e5fe4b93dde8eb1c903bd" rounded />
+                    <Image src={item.fotoLink} rounded />
                     </Col>
                     <Col sm={6}>
-                        <h1> Carlos, o Jogo </h1>
-                        <p>Jogo Tradicional Incrível</p>
-                        <p>
-                            A série consiste, basicamente, nas aventuras do bandicoot
-                            geneticamente alterado, Carlos, que luta para impedir o planos do cientista do mal
-                            Neo Córtex e seus lacaios. A história do jogo se passa nas fictícias Ilhas Wumpa,
-                            um arquipélago situado na costa noroeste da Austrália, mas outros lugares são revelados.
-                        </p>
-                        <h2>R$ 1.000,00</h2>
-                        <Button variant="primary">Adicionar ao carrinho</Button>
+                        <h1> {item.nome}</h1>
+                        <p>{item.descricao}</p>
+                        <h2>{item.valor}</h2>
+                        <Button variant="primary" >Adicionar ao carrinho</Button>
+                        <Button variant="primary">
+                            <Link to= "/carrinho" style={{textDecoration:"none", color: "white"}}>
+                                Ver carrinho
+                            </Link>
+                        </Button>
                     </Col>
                 </Row>
             </Container>
