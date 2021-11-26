@@ -1,4 +1,5 @@
 import {Row, Col, Card, Button, Container} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function CardProduto() {
 
@@ -20,7 +21,9 @@ export default function CardProduto() {
                                 This is a longer card with supporting text below as a natural
                                 lead-in to additional content. This content is a little bit longer.
                             </Card.Text>
-                            <Button variant="primary">Ver produto</Button>
+                            <Button variant="primary">
+                                <Link style={{textDecoration:"none", color: "white"}} to="/descricao">Ver produto</Link>
+                            </Button>
                             </Card.Body>
                             </Card>
                         </Col>

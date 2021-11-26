@@ -8,7 +8,7 @@ export default class NavBar extends Component {
             <>
                 <Navbar style={{background: "#FAFF00"}} expand="lg" sticky="top" fixed="top" expand={false}>
                     <Container fluid>
-                        <Navbar.Brand href="#">Livre Mercado 💸</Navbar.Brand>
+                        <Navbar.Brand href="/">Livre Mercado💸</Navbar.Brand>
                         <Navbar.Toggle aria-controls="offcanvasNavbar" />
                         <Navbar.Offcanvas
                             id="offcanvasNavbar"
@@ -20,9 +20,9 @@ export default class NavBar extends Component {
                             </Offcanvas.Header>
                             <Offcanvas.Body>
                                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                                    <Nav.Link href="#action1">Home 🏠</Nav.Link>
-                                    <Nav.Link href="#action1">Entre ou Cadastre 🔑</Nav.Link>
-                                    <Nav.Link href="#action2">Carrinho 🛒</Nav.Link>
+                                    <Nav.Link href="/">Home 🏠</Nav.Link>
+                                    <Nav.Link href="/">Entre ou Cadastre 🔑</Nav.Link>
+                                    <Nav.Link href="/descricao">Carrinho 🛒</Nav.Link>
                                 </Nav>
                                 <Form className="d-flex">
                                     <FormControl
