@@ -12,7 +12,8 @@ export default function DescricaoProduto() {
                     <Col sm={6}>
                         <h1> Carlos, o Jogo </h1>
                         <p>Jogo Tradicional Incrível</p>
-                        <p>A série consiste, basicamente, nas aventuras do bandicoot
+                        <p>
+                            A série consiste, basicamente, nas aventuras do bandicoot
                             geneticamente alterado, Carlos, que luta para impedir o planos do cientista do mal
                             Neo Córtex e seus lacaios. A história do jogo se passa nas fictícias Ilhas Wumpa,
                             um arquipélago situado na costa noroeste da Austrália, mas outros lugares são revelados.
