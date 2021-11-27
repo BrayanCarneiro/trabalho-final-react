@@ -1,8 +1,36 @@
 import {Row, Col, Button, Container} from 'react-bootstrap';
-import { useState } from 'react'
+import React, { useState } from 'react'
+import api from './api';
 
 export default function Carrinho() {
     const [count, setCount] = useState(1);
+
+
+    // React.useEffect(() => { chamadaAPI() }, [])
+
+    // const idCliente = 2;
+
+    // const chamadaAPI = (props) => {
+
+    //     Api.get(`/pedido`).then((result)=> {
+
+    //         if (result.data?.length > 0) {
+    //             const encontrado = result.data.find((pedido) => pedido.cliente?.id == idCliente);
+    //             if (encontrado) {
+    //                 setItensPedido(encontrado.itensPedido);
+    //             }
+    //         }
+    //     })
+    // };
+
+
+    React.useEffect(()=> {itemCarr}, [])
+
+    let itemCarr = ()=>{
+        const listar = (res) => setItens(res.data);
+        api.get("/pedido").then(listar);
+    }
+
 
     return (
         <>
