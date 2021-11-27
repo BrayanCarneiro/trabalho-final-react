@@ -4,11 +4,17 @@ import { Navbar, Nav, Container, Form, FormControl, Button, Offcanvas } from 're
 export default class NavBar extends Component {
 
     render() {
+
+        function mercado (props){
+            return(<p>Livre Mercado💸</p>)
+        }
+
         return (
             <>
                 <Navbar style={{background: "#FAFF00"}} expand="lg" sticky="top" fixed="top" expand={false}>
                     <Container fluid>
-                        <Navbar.Brand href="/">Livre Mercado💸</Navbar.Brand>
+                        <Navbar.Brand href="/" >{mercado()}</Navbar.Brand>
+                    
                         <Navbar.Toggle aria-controls="offcanvasNavbar" />
                         <Navbar.Offcanvas
                             id="offcanvasNavbar"
