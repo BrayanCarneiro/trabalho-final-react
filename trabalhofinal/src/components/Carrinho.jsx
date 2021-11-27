@@ -10,12 +10,12 @@ export default function Carrinho() {
                 <Row>
                     <Col>Produto aqui</Col>
                     <Col md="auto">
-                        <Button variant="outline-primary" onClick={() => setCount((count) => count + 1)}>
-                            {count}
-                        </Button>
+                        <Button variant="outline-primary" onClick={() => setCount((count) => count - 1)}>-</Button>
+                        {"      "}{count}{"      "}
+                        <Button variant="outline-primary" onClick={() => setCount((count) => count + 1)}>+</Button>
                     </Col>
                     <Col xs lg="2">
-                        <h3>R$100,00</h3>
+                        <h3>{count*100}</h3>
                     </Col>
                 </Row>  
             </Container>

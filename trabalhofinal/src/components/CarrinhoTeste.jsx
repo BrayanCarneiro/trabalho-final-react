@@ -33,7 +33,7 @@ let item3 = {
 }
 
     let produtos = [item1,item2,item3]
-    this.setLista(["oi"])
+    //this.setLista(["oi"])
     console.log(lista)
 
 function aumentar(item,index){
