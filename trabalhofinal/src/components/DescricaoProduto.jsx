@@ -22,12 +22,20 @@ export default function DescricaoProduto() {
         api.get(`/produto/${id}`).then(mostrarDetalhe);
     }
 
+    let stilItem = {
+        height: "500px",
+        width: "502px",
+    }
+    let stilorow = {
+        marginTop: "200px"
+
+    }
     return (
         <>
             <Container>
-                <Row>
+                <Row style = {stilorow}>
                     <Col sm={6}>
-                    <Image src={item.fotoLink} rounded />
+                    <Image style = {stilItem} src={item.fotoLink} rounded />
                     </Col>
                     <Col sm={6}>
                         <h1> {item.nome}</h1>
