@@ -22,17 +22,24 @@ export default function DescricaoProduto() {
         api.get(`/produto/${id}`).then(mostrarDetalhe);
     }
 
+    let stilItem = {
+        height: "500px",
+        width: "502px"
+    }
+
+    
+
     return (
         <>
             <Container>
                 <Row>
-                    <Col sm={6}>
-                    <Image src={item.fotoLink} rounded />
+                    <Col sm={6} >
+                    <Image style = {stilItem} src={item.fotoLink} rounded />
                     </Col>
                     <Col sm={6}>
                         <h1> {item.nome}</h1>
                         <p>{item.descricao}</p>
-                        <h2>{item.valor}</h2>
+                        <h2>R$ {item.valor}</h2>
                         <Button variant="primary" >Adicionar ao carrinho</Button>
                         <Button variant="primary">
                             <Link to= "/carrinho" style={{textDecoration:"none", color: "white"}}>
